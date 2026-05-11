@@ -18,7 +18,7 @@ restart)
   ./manage_my_process &
   echo $! >/var/run/my_process.pid
   disown
-  echo "manage_my_process started"
+  echo "manage_my_process restarted"
   ;;
 *)
   echo "Usage: manage_my_process {start|stop|restart}"
