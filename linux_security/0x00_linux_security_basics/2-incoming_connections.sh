@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ufw allow http
+sudo ufw allow 80
