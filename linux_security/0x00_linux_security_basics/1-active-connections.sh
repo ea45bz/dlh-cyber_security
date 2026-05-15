@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ss -f inet  -n -p
+sudo ss -t -n -p
