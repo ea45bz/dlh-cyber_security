@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ss -a -t -n -p
+sudo ss -atnp
