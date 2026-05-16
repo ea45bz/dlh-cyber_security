@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo netstat -antup
+sudo netstat -lntup
