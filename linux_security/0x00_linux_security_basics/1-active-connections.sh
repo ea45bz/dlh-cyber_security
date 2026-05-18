@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo ss -atnps
+sudo ss -atnpe
