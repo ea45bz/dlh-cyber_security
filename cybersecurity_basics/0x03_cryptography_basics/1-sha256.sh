@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "$1"|sha256sum |tr -d "  -">1_hash.txt
+echo -n "$1" |sha256sum |  awk '{print $1}' >1_hash.txt
