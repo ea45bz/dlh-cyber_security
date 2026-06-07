@@ -1,2 +1,2 @@
 #!/bin/bash
-openssl passwd -5 $1 >1_hash.txt
+echo -n $1|sha256sum |tr -d " -"
