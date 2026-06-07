@@ -1,2 +1,2 @@
 #!/bin/bash
-openssl passwd -1 $1 >2_hash.txt
+echo "$1"|md5sum |tr -d "  -">2_hash.txt
