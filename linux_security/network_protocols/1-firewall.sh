@@ -1,3 +1,3 @@
 #!/bin/bash
-sudo ufw allow 22/tcp
-sudo ufw enable
+sudo iptables -P INPUT DROP
+sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
