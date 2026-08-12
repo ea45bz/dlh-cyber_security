@@ -13,8 +13,6 @@
 ## Discuss strategies for integrating CVE information into vulnerability management programs
 
 - SIEMs or ticketing systems can show “CVE severity by asset”
-- **Set up automated NVD feed ingestion** → populate your vulnerability database.
-- **Map assets → components → CVEs**; flag critical business services.
-- **Define CVSS threshold policies** and embed them in CI/CD, patching workflows, and incident playbooks.
-- **Automate alerts for newly published or actively exploited CVEs** (threat‑intelligence feeds).
-- **Measure MTTR and coverage; adjust thresholds as you learn**.
+- Set up automated NVD feed ingestion → populate your vulnerability database.
+- Define CVSS threshold policies and embed them in CI/CD, patching workflows, and incident playbooks.
+- Automate alerts for newly published or actively exploited CVEs (threat‑intelligence feeds).

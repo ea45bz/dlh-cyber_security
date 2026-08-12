@@ -1,6 +1,12 @@
 ## What is the purpose of CVE (Common Vulnerabilities and Exposures) in cybersecurity?
 
-A publicly‑maintained identifier assigned to every known software or hardware vulnerability, providing a _single, unambiguous reference_ that everyone—vendors, researchers, security tools, auditors—can use when talking about the same flaw.
+The primary purposes of CVE are:
+
+1. Standardization: To provide a standardized naming scheme for vulnerabilities, enabling easier information sharing and collaboration among cybersecurity professionals, vendors, and researchers.
+
+2. Identification: To uniquely identify vulnerabilities and exposures across various information systems, facilitating efficient vulnerability management and remediation efforts.
+
+3. Prioritization: To help organizations prioritize their security efforts based on the severity and impact of identified vulnerabilities.
 
 ## How does it contribute to vulnerability management and information sharing?
 
