@@ -6,7 +6,7 @@ Integrity is the most critical, the platform must guarantee exact trade data, or
 
 **Can security requirements conflict with performance requirements?**
 
-Performance must not compromise integrity, optimization can the done on configuraion and infrastructure.
+Performance must not compromise integrity, optimization can the done on configuration and infrastructure.
 
 ---
 
