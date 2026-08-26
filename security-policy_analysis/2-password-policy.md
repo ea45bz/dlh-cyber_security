@@ -127,7 +127,7 @@ _The signed acknowledgment is stored electronically in the HRIS._
 
 ## 8. Technical Standards Reference
 
-A separate **Technical Standards Document** (link: `docs/Technical-Standards-Password.md`) contains detailed implementation guidance, including:
+A separate **Technical Standards Document** [docs/Technical-Standards-Password.md](docs/Technical-Standards-Password.md) contains detailed implementation guidance, including:
 
 1. NIST SP 800‑63B alignment – password creation, storage, and MFA.
 2. PCI‑DSS v4.0 Requirement 8 – encryption of stored passwords.
