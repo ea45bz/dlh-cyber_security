@@ -1,9 +1,9 @@
 ```yaml
 cve_segment_analysis:
-  - cve: "CVE‑2021‑44790"
-    host: "10.10.2.15 (billing-srv-01 – Apache HTTP Server mod_lua Buffer Overflow)"
-    cvss_base_score: 9.8
-    scenario_a:
+  - CVE: "CVE‑2021‑44790"
+    Host: "10.10.2.15 (billing-srv-01 – Apache HTTP Server mod_lua Buffer Overflow)"
+    CVSS Base Score: 9.8
+    Scenario A:
       current_flat_network:
         who_can_reach_this_vulnerability: >
           Every host in the 10.10.0.0/16 subnet can send a crafted HTTP request to
@@ -18,7 +18,7 @@ cve_segment_analysis:
         effective_risk:
           "Extremely high – immediate access to all internal assets,
           including patient‑record databases and critical infrastructure."
-    scenario_b:
+    Scenario B:
       hypothetical_segmented_network:
         who_can_reach_this_vulnerability: >
           Only hosts in billing‑srv‑01’s VLAN (e.g., other billing or accounting
@@ -36,10 +36,10 @@ cve_segment_analysis:
       9x
       # Approx. (# of potential victims in flat network / # in segmented VLAN)
 
-  - cve: "CVE‑2020‑1938"
-    host: "10.10.2.10 (ehr-srv-01 – Apache Tomcat AJP Ghostcat)"
-    cvss_base_score: 9.8
-    scenario_a:
+  - CVE: "CVE‑2020‑1938"
+    Host: "10.10.2.10 (ehr-srv-01 – Apache Tomcat AJP Ghostcat)"
+    CVSS Base Score: 9.8
+    Scenario A:
       current_flat_network:
         who_can_reach_this_vulnerability: >
           Any internal host can connect to port 8009 (AJP) on ehr‑srv‑01.
@@ -51,7 +51,7 @@ cve_segment_analysis:
             and any medical device that communicates over the flat LAN.
         effective_risk: "Critical – full read of patient records and the
           ability to pivot into all other internal assets."
-    scenario_b:
+    Scenario B:
       hypothetical_segmented_network:
         who_can_reach_this_vulnerability: >
           Only hosts in ehr‑srv‑01’s VLAN (perhaps 3–4 hosts).
@@ -64,10 +64,10 @@ cve_segment_analysis:
           movement."
     risk_amplification_factor: 18x
 
-  - cve: "CVE‑2019‑0708"
-    host: "10.10.1.70 (WS‑RAD‑01 – Windows XP RDP)"
-    cvss_base_score: 9.8
-    scenario_a:
+  - CVE: "CVE‑2019‑0708"
+    Host: "10.10.1.70 (WS‑RAD‑01 – Windows XP RDP)"
+    CVSS Base Score: 9.8
+    Scenario A:
       current_flat_network:
         who_can_reach_this_vulnerability: >
           Every internal host can open an RDP session to port 3389 on the MRI workstation.
@@ -79,7 +79,7 @@ cve_segment_analysis:
         effective_risk: "Very high – critical imaging equipment is
           exposed, with immediate lateral reach into all
           sensitive systems."
-    scenario_b:
+    Scenario B:
       hypothetical_segmented_network:
         who_can_reach_this_vulnerability: >
           Only hosts in the MRI workstation’s VLAN (likely 5–6 hosts).
