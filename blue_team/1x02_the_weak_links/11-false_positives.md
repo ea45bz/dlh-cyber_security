@@ -1,0 +1,6 @@
+Finding ID: [From scan report]
+Reported Vulnerability: [What the scanner claimed]
+Why It Is a False Positive: [Technical explanation]
+Validation Method: [How would you confirm this is a FP? What test or check?]
+Risk of Acting on This FP: [What resources would be wasted if you treated this as a real finding?]
+Risk of Not Validating: [What would happen if this were NOT a FP and you dismissed it?]
