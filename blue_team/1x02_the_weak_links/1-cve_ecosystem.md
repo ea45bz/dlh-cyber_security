@@ -48,7 +48,7 @@ References:
 ### What is the structure of a CVE ID ?
 
 First 4 digit are the year of occurence
-Last digit is a number of occurence
+Second part, a sequential numeric counter, usually four digits for IDs created. Once that threshold is crossed the number grows to five, this part is unique within its year;
 
 ### What is a CNA (CVE Numbering Authority) and what role does it play ?
 
