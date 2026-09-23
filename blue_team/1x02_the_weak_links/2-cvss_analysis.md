@@ -15,18 +15,16 @@
 
 #### Why those values were chosen for CVE‑2021‑44790
 
-| Metric  | Reason                                                                                                                                                                                   |
-| ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| AV:N    | The flaw is triggered via a malicious HTTP request sent over the network to Apache’s `mod_lua`.                                                                                          |
-| AC:L    | The exploit only requires sending a crafted multipart body; no special setup or conditions.                                                                                              |
-| PR:N    | No authentication or privileged user context is needed; any web‑server user (www-data) can trigger it.                                                                                   |
-| UI:N    | An attacker just needs to send the request; no end‑user interaction is required.                                                                                                         |
-| S:U     | The vulnerability affects only the Apache HTTP server process; it does not alter other system components.                                                                                |
-| C/I/A:H | Remote code execution allows an attacker to read, modify or delete any data and can crash or otherwise deny the service, giving full confidentiality, integrity and availability impact. |
+AV:N The flaw is triggered via a malicious HTTP request sent over the network to Apache’s `mod_lua`.|
+AC:L The exploit only requires sending a crafted multipart body; no special setup or conditions. |
+PR:N No authentication or privileged user context is needed; any web‑server user (www-data) can trigger it. |
+UI:N An attacker just needs to send the request; no end‑user interaction is required. |
+S:U The vulnerability affects only the Apache HTTP server process; it does not alter other system components. |
+C/I/A:H Remote code execution allows an attacker to read, modify or delete any data and can crash or otherwise deny the service, giving full confidentiality, integrity and availability impact. |
 
 ---
 
-### 2. Score change if **AV** is switched from **N → L**
+### Score change if **AV** is switched from **N → L**
 
 #### Original vector
 
@@ -69,7 +67,7 @@ Because Exploitability contributes directly to the final base score, lowering AV
 
 CVSS vector string:
 '''
-AV:L/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N
+CVSS:3.1/AV:A/AC:H/PR:L/UI:N/S:U/C:H/I:N/A:N
 '''
 
 CVSS Base Score: 4.7
