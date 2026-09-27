@@ -2,15 +2,16 @@
 
 ## 1 Organization Overview
 
-- **Sites**
+**Sites**
 
-  | Site                                    | Type                   | Function                                                     | Headcount |
-  | --------------------------------------- | ---------------------- | ------------------------------------------------------------ | --------- |
-  | MedDefense Central Hospital (downtown)  | Acute care facility    | Patient treatment, diagnostics, imaging, pharmacy, lab, etc. | ~1,400    |
-  | Westside Clinic (suburban)              | Outpatient office      | Primary care, imaging (X‑ray/US), labs, minor procedures, PT | ~180      |
-  | Corporate HQ (Greenfield Business Park) | Administrative offices | Finance, HR, Legal, Marketing, Executive leadership, IT      | ~220      |
+| Site                                    | Type                   | Function                                                     | Headcount |
+| --------------------------------------- | ---------------------- | ------------------------------------------------------------ | --------- |
+| MedDefense Central Hospital (downtown)  | Acute care facility    | Patient treatment, diagnostics, imaging, pharmacy, lab, etc. | ~1,400    |
+| Westside Clinic (suburban)              | Outpatient office      | Primary care, imaging (X‑ray/US), labs, minor procedures, PT | ~180      |
+| Corporate HQ (Greenfield Business Park) | Administrative offices | Finance, HR, Legal, Marketing, Executive leadership, IT      | ~220      |
 
-- **Departments**
+**Departments**
+
 - Emergency
 - Surgery
 - Cardiology
@@ -28,18 +29,23 @@
 - Executive Leadership
 - IT
 
-- **Security‑Relevant Reporting Structure**
-  - CISO Position: Vacant (acting Deputy CISO James Chen).
-  - James Chen, Deputy CISO – reports to CEO in practice; manages security policy but not IT ops.
-  - Sarah Park, IT Director – peers with James; leads 12‑person IT team.
-    - System Administrators (3)
-    - Network Technicians (2)
-    - Database Administrator (1)
-    - Helpdesk Analysts (2) – Mike Torres lead
-    - Desktop Support Technicians (2)
-    - IT Intern (vacant)
+**Security‑Relevant Reporting Structure**
+
+- CISO Position: Vacant (acting Deputy CISO James Chen).
+- James Chen, Deputy CISO – reports to CEO in practice; manages security policy but not IT ops.
+- Sarah Park, IT Director – peers with James; leads 12‑person IT team.
+  - System Administrators (3)
+  - Network Technicians (2)
+  - Database Administrator (1)
+  - Helpdesk Analysts (2) – Mike Torres lead
+  - Desktop Support Technicians (2)
+  - IT Intern (vacant)
 
 ## 2 IT Infrastructure Identified
+
+## 3 Data and Services
+
+## 4 Known Unknowns
 
 Central: - name: ehr-srv-01
 type_os: Ubuntu 20.04 LTS
