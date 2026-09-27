@@ -150,3 +150,21 @@ sudo auditctl -w /etc/ssh -p wa -k perm_change
 ### What is Umask in Linux
 the “file‑mode mask” to set permissions to fiels
 ```
+
+** CIA Triad in Deutsch
+
+**CIA‑Triade (Konfidentialität – Integrität – Verfügbarkeit)**
+
+| Komponente                            | Bedeutung                                                                                    | Beispiele                                                                              |
+| ------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| **Confidentiality (Vertraulichkeit)** | Schutz sensibler Informationen vor unbefugtem Zugriff.                                       | Verschlüsselte E-Mails, Passwortschutz von Datenbanken, SSL/TLS für Web‑Kommunikation. |
+| **Integrity (Integrität)**            | Gewährleistung, dass Daten nicht ohne Erlaubnis verändert werden können und korrekt bleiben. | Prüfsummen/Hashes, digitale Signaturen, Versionskontrolle (Git).                       |
+| **Availability (Verfügbarkeit)**      | Sicherstellung, dass autorisierte Benutzer jederzeit Zugriff auf Ressourcen haben.           | Redundante Systeme, Load‑Balancing, DDoS‑Schutz, regelmäßige Backups.                  |
+
+**Warum sie wichtig sind:**
+
+- Ohne Vertraulichkeit könnten sensible Daten gestohlen werden.
+- Ohne Integrität können Daten manipuliert und Vertrauen zerstört werden.
+- Ohne Verfügbarkeit wäre die Dienstleistung nicht nutzbar, was z.B. zu Umsatzverlusten führt.
+
+Die CIA‑Triade bildet das grundlegende Modell für Sicherheitsplanung, Risikoanalyse und Compliance‑Erfüllung.

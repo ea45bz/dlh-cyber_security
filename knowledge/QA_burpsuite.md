@@ -12,8 +12,7 @@ Logger Proxy Intercept
 
 ## How does `Spider` work in `Burp Suite`?
 
-
-
+Spider is an automated web crawler that builds a map of all reachable resources starting from the seed URL
 ## What is the purpose of `Repeater` in `Burp Suite`?
 
 Purpose of the repeater is sending interesting requests over and over again, for studying the website's response 
