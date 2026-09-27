@@ -75,26 +75,15 @@
 
 ## 4 Known Unknowns
 
-| Gap                                                                                                                                                                     | Why it matters                                                        |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| **Server inventory completeness** – print‑srv‑01 is marked _UNVERIFIED_; existence of a second Westside server unconfirmed.                                             | Potential hidden attack surface; unknown patch status.                |
-| **Operating system / patch status for medical devices** – MRI (Windows XP), CT (unknown OS), infusion pumps, monitors.                                                  | Devices may be vulnerable to known exploits.                          |
-| **Guest Wi‑Fi isolation** – SSID exists but no confirmation that traffic is isolated from internal network.                                                             | Risk of lateral movement if compromised.                              |
-| **MFA coverage** – only James’s personal account has MFA; others rely on password policy alone.                                                                         | Non‑compliant with many security frameworks.                          |
-| **Physical security** – server room badge access uses generic badge; no cameras in IT corridor; Westside IT closet not locked.                                          | Vulnerable to insider or opportunistic theft/access.                  |
-| **VPN ACLs** – not audited, especially for HQ and Westside connections.                                                                                                 | Possible over‑permissive rules exposing internal resources.           |
-| **Endpoint counts & health** – last AD report 8 months old; Sophos update status unknown on all machines.                                                               | Inaccurate risk assessment of endpoint exposure.                      |
-| **Cloud service inventory** – O365 is known, but departments may use other SaaS solutions (e.g., SharePoint, Teams, non‑Microsoft services).                            | Untracked data flows could violate compliance requirements.           |
-| **Compliance evidence** – no formal HIPAA Security Rule assessment, incident response plan, business continuity/disaster recovery plan, or documented risk assessments. | Cannot prove regulatory compliance; high legal exposure.              |
-| **Network segmentation / VLANs** – flat 10.10.0.0/16 broadcast domain with no VLANs.                                                                                    | Single point of failure for critical services; lateral movement risk. |
-| **Backup strategy** – no off‑site or cloud backup; Veeam backups stored locally next to source data.                                                                    | Single point of failure in ransomware scenario.                       |
-| **Firmware / patch status of network gear** – Cisco switches, FortiGate, Ubiquiti APs, Netgear router, consumer-grade equipment.                                        | Potential unpatched vulnerabilities on perimeter devices.             |
-| **Firewall configuration details** – rulesets, IDS/IPS settings not provided.                                                                                           | Uncertain threat detection capability.                                |
-| **Shared accounts** – radiology PACS shared login (“raduser / radiology1”) remains unresolved.                                                                          | Brute‑force and privilege escalation risk.                            |
-| **Endpoint device management** – iPads used by physicians; unclear if MDM, OS patching, or antivirus applied.                                                           | Potential unpatched mobile devices exposing PHI.                      |
-
----
-
-### Takeaway
-
-The package gives a broad picture of MedDefense’s physical sites, core IT assets, and the security‑relevant reporting structure. However, several critical gaps—especially around network segmentation, device patch status, MFA coverage, backup strategy, and formal compliance documentation—must be addressed to form a complete risk assessment and to demonstrate HIPAA/IT governance readiness.
+- Server inventory completeness** – print‑srv‑01 is marked, existence of a second Westside server unconfirmed.
+- Operating system / patch status for medical devices** – MRI (Windows XP), CT (unknown OS), infusion pumps, monitors.
+- Guest Wi‑Fi isolation** – SSID exists but no confirmation that traffic is isolated from internal network.
+- MFA coverage – only James’s personal account has MFA; others rely on password policy alone.
+- Physical security – server room badge access uses generic badge; no cameras in IT corridor; Westside IT closet not locked.
+- VPN ACLs – not audited, especially for HQ and Westside connections.
+- Endpoint counts & health – last AD report 8 months old; Sophos update status unknown on all machines.
+- Cloud service inventory – O365 is known, but departments may use other SaaS solutions
+- Network segmentation / VLANs – flat 10.10.0.0/16 broadcast domain with no VLANs.
+- Backup strategy – no off‑site or cloud backup; Veeam backups stored locally next to source data.
+- Firmware / patch status of network gear – Cisco switches, FortiGate, Ubiquiti APs, Netgear router, consumer-grade equipment.
+- Firewall configuration details – rulesets, IDS/IPS settings not provided.
