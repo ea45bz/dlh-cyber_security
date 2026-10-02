@@ -2,11 +2,11 @@
 
 | Activity                    | CEO | Deputy CISO (James) | IT Director (Sarah) | Dept Heads | Security Analyst (You) |
 | --------------------------- | --- | ------------------- | ------------------- | ---------- | ---------------------- |
-| Security budget approval    | A   | R                   | C                   | I          | C                      |
-| Vulnerability remediation   | I   | R                   | A                   | C          | C                      |
-| Incident response execution | I   | A                   | R                   | C          | C                      |
-| Security policy approval    | I   | R                   | C                   | A          | C                      |
-| Risk acceptance decisions   | I   | R                   | C                   | A          | C                      |
+| Security budget approval    | A   | C                   | R                   | I          | C                      |
+| Vulnerability remediation   | I   | R                   | R                   | A          | C                      |
+| Incident response execution | I   | R                   | R                   | A          | C                      |
+| Security policy approval    | A   | C                   | C                   | R          | C                      |
+| Risk acceptance decisions   | A   | C                   | C                   | R          | C                      |
 | Security awareness training | I   | R                   | C                   | A          | C                      |
 | Vendor risk assessment      | I   | R                   | C                   | C          | A                      |
 | Audit coordination          | I   | R                   | C                   | C          | A                      |
