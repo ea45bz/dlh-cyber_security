@@ -1,15 +1,15 @@
 # Part 1 – RACI Matrix
 
-| Activity                    | CEO | Deputy CISO | IT Director | Dept Heads | Security Analyst |
-| --------------------------- | --- | ----------- | ----------- | ---------- | ---------------- |
-| Security budget approval    | A   | R           | C           | I          | C                |
-| Vulnerability remediation   | I   | R           | A           | C          | C                |
-| Incident response execution | I   | A           | R           | C          | C                |
-| Security policy approval    | I   | R           | C           | A          | C                |
-| Risk acceptance decisions   | I   | R           | C           | A          | C                |
-| Security awareness training | I   | R           | C           | A          | C                |
-| Vendor risk assessment      | I   | R           | C           | C          | A                |
-| Audit coordination          | I   | R           | C           | C          | A                |
+| Activity                    | CEO | Deputy CISO (James) | IT Director (Sarah) | Dept Heads | Security Analyst (You) |
+| --------------------------- | --- | ------------------- | ------------------- | ---------- | ---------------------- |
+| Security budget approval    | A   | R                   | C                   | I          | C                      |
+| Vulnerability remediation   | I   | R                   | A                   | C          | C                      |
+| Incident response execution | I   | A                   | R                   | C          | C                      |
+| Security policy approval    | I   | R                   | C                   | A          | C                      |
+| Risk acceptance decisions   | I   | R                   | C                   | A          | C                      |
+| Security awareness training | I   | R                   | C                   | A          | C                      |
+| Vendor risk assessment      | I   | R                   | C                   | C          | A                      |
+| Audit coordination          | I   | R                   | C                   | C          | A                      |
 
 # Part 2 – Role Definitions role-definition
 
