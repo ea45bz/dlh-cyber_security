@@ -11,9 +11,9 @@
 | Vendor risk assessment      | I   | R           | C           | C          | A                |
 | Audit coordination          | I   | R           | C           | C          | A                |
 
-# Part 2 – Role Definitions
+# Part 2 – Role Definitions role-definition
 
-Data_Owner:
+Data Owner:
 Description: >
 The individual or position that has final authority and accountability for a specific data set,
 responsible for determining its classification, retention policy and who may access it.
@@ -22,7 +22,7 @@ Rationale: >
 As the steward of patient medical information, Dr. Patel has clinical and regulatory
 authority over data use and must sign off on any processing that impacts care or privacy.
 
-Data_Controller:
+Data Controller:
 Description: >
 The entity (organization or sub‑organisation) that determines purposes and means
 of processing personal data, establishing policies for access, retention, and deletion.
@@ -31,7 +31,7 @@ Rationale: >
 Sarah controls the technical platforms (EHR, PACS, billing servers) and decides how data is stored,
 transmitted and protected; she enforces the organization‑wide data handling procedures.
 
-Data_Processor:
+Data Processor:
 Description: >
 Third‑party or internal entities that process personal data on behalf of the controller
 following its instructions and only for agreed purposes.
@@ -40,7 +40,7 @@ Rationale: >
 MedTech performs software updates, patches and provides remote access to the EHR platform;
 they are bound by a contract and cannot use PHI beyond their service scope.
 
-Data_Custodian/Steward:
+Data Custodian/Steward:
 Description: >
 The role that manages day‑to‑day technical stewardship of data assets,
 ensuring integrity, availability, and security controls are in place.
@@ -50,7 +50,7 @@ As the operational guardrail, the analyst applies patches, monitors logs,
 validates backup tests and enforces encryption – effectively safeguarding the data that
 the controller owns.
 
-# Part 3 – Consequences of a Vacant CISO & Recommendation
+# Part 3 – Consequences of a vacant CISO & Recommendation
 
 CISO position is vacant:
 Consequences: >
