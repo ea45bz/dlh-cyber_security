@@ -4,9 +4,9 @@
 | --------------------------- | --- | ------------------- | ------------------- | ---------- | ---------------------- |
 | Security budget approval    | A   | C                   | C                   | R          | C                      |
 | Vulnerability remediation   | A   | R                   | R                   | I          | C                      |
-| Incident response execution | A   | R                   | R                   | I          | C                      |
-| Security policy approval    | A   | R                   | R                   | I          | C                      |
-| Risk acceptance decisions   | A   | R                   | R                   | I          | C                      |
+| Incident response execution | A   | R                   | C                   | I          | C                      |
+| Security policy approval    | I   | R                   | R                   | A          | C                      |
+| Risk acceptance decisions   | I   | R                   | R                   | A          | C                      |
 | Security awareness training | I   | R                   | C                   | A          | C                      |
 | Vendor risk assessment      | I   | R                   | C                   | C          | A                      |
 | Audit coordination          | I   | R                   | C                   | C          | A                      |
