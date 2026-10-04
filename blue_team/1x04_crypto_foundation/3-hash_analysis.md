@@ -1,5 +1,15 @@
 # Part 1 - The Avalanche Effect
 
+'''
+echo -n "MedDefense" | sha256sum
+
+39e026e107a44b2268e43e16e61033fdcc5d2bd62b23e03aca51db35c8671098 -
+
+echo -n "MedDefense1" | sha256sum
+
+97a4141d69cc726a7f6ef577df588d4010c3fe4f235a8bdb616732ba9bf17b92 -
+'''
+
 How many characters of the hex output differ ?
 
 0 characters difference
