@@ -29,6 +29,14 @@ Finding 018 shows MedDefense’s AD still permits RC4‑Kerberos tickets; RC4�
 
 # Part 3 - Rainbow Table Demonstration
 
+'''
+echo -n "password123" | md5sum
+482c811da5d5b4bc6d497ffa98491e38 -
+
+echo -n "s4lt9xQ2:password123" | md5sum
+6d537fa53f1db2c22b0451ef4ef9fbe8 -
+'''
+
 crackstation.net lookup result:
 
 - no salted hash found
