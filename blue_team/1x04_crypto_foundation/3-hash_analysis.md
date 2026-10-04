@@ -29,9 +29,8 @@ Many hex characters change even with a one-character input change.
 | MD5       | 128 bits    | 2^128 (≈ 3.4 × 10³⁸)    |
 | SHA-256   | 256 bits    | 2^256 (≈ 1.15 × 10⁷⁷)   |
 
-Shorter hash outputs expose more values per bit of entropy.
-
-Because the number of possible collisions grows roughly as (\sqrt{N}), a birthday attack only needs about (2^{n/2}) attempts to find two messages that hash identically. Thus MD5’s collision resistance is effectively halved compared to SHA-256, making collision attacks far more feasible.
+MD5 (128-bit) has a much smaller output space than SHA-256 (256-bit), so collisions are easier to find.
+A birthday attack exploits the fact that you only need any two inputs with the same hash, and this becomes feasible in about 2^(n/2) work, not by brute-forcing the entire space.
 
 Finding 018 shows MedDefense’s AD still permits RC4‑Kerberos tickets; RC4’s key derivation uses an MD5 hash internally. In practice this means an attacker who can obtain a ticket could exploit MD5 collisions or the known weaknesses of RC4 to forge valid Kerberos authentications.
 RC4 in Kerberos weakens protection of AD tickets/hashes, increasing the practicality of offline password cracking, ticket abuse, or credential recovery.
