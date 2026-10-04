@@ -8,11 +8,19 @@ echo -n "MedDefense" | sha256sum
 echo -n "MedDefense1" | sha256sum
 
 97a4141d69cc726a7f6ef577df588d4010c3fe4f235a8bdb616732ba9bf17b92 -
+
+echo -n "MedDefense" | md5sum
+
+75d47fd4b4d183456d0f98fd9ba6ae4d -
+
+echo -n "MedDefense1" | md5sum
+
+0d2aed72043f78c2935e61ba8520306d -
 '''
 
 How many characters of the hex output differ ?
 
-0 characters difference
+Many hex characters change even with a one-character input change.
 
 # Part 2 - Hash Collisions and the Birthday Problem
 
