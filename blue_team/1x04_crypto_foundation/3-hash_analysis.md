@@ -16,10 +16,10 @@ How many characters of the hex output differ ?
 
 # Part 2 - Hash Collisions and the Birthday Problem
 
-| Algorithm | Hash Length | Possible unique outputs     |
-| --------- | ----------- | --------------------------- |
-| MD5       | 128 bits    | \(2^{128}\) (≈ 3.4 × 10³⁸)  |
-| SHA-256   | 256 bits    | \(2^{256}\) (≈ 1.15 × 10⁷⁷) |
+| Algorithm | Hash Length | Possible unique outputs |
+| --------- | ----------- | ----------------------- |
+| MD5       | 128 bits    | 2^128 (≈ 3.4 × 10³⁸)    |
+| SHA-256   | 256 bits    | 2^256 (≈ 1.15 × 10⁷⁷)   |
 
 Shorter hash outputs expose more values per bit of entropy.
 
