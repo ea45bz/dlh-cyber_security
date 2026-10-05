@@ -8,18 +8,20 @@ openssl s_client -showcerts </dev/null -connect expired.badssl.com:443 >expired.
 openssl x509 -text -in letsencrypt.org.pem
 
 openssl x509  -text -noout -in letsencrypt.org.pem
-Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number:
-            0c:d5:d0:af:b0:61:1b:5b:d9:d6:92:53:5c:0c:a7:c4
+
+Subject: C=US, ST=California, L=San Francisco, O=Netlify, Inc, CN=*.netlify.app
+Issuer: C=US, O=DigiCert Inc, CN=DigiCert Global G2 TLS RSA SHA256 2020 CA1
+Validity:
+  Not Before: Feb 16 00:00:00 2026 GMT
+  Not After : Mar 19 23:59:59 2027 GMT
+Serial Number: 0c:d5:d0:af:b0:61:1b:5b:d9:d6:92:53:5c:0c:a7:c4
+Signature Algorithm: sha256WithRSAEncryption
+Public Key Info: id-ecPublicKey, P-256
+SAN: absent in the writeup’s analysis, only present in raw output
+Key Usage / EKU: present in raw output
+
+
     Signature Algorithm: sha256WithRSAEncryption
-        Issuer: C=US, O=DigiCert Inc, CN=DigiCert Global G2 TLS RSA SHA256 2020 CA1
-        Validity
-            Not Before: Feb 16 00:00:00 2026 GMT
-            Not After : Mar 19 23:59:59 2027 GMT
-        Subject: C=US, ST=California, L=San Francisco, O=Netlify, Inc, CN=*.netlify.app
-        Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey
                 Public-Key: (256 bit)
                 pub:
@@ -30,96 +32,49 @@ Certificate:
                     5a:94:02:42:28
                 ASN1 OID: prime256v1
                 NIST CURVE: P-256
-        X509v3 extensions:
-            X509v3 Authority Key Identifier:
-                keyid:74:85:80:C0:66:C7:DF:37:DE:CF:BD:29:37:AA:03:1D:BE:ED:CD:17
 
-            X509v3 Subject Key Identifier:
-                3E:6A:BE:6E:25:AC:12:10:AB:BE:F1:EB:A7:A9:BC:6D:88:7D:54:8F
-            X509v3 Subject Alternative Name:
-                DNS:*.netlify.app, DNS:netlify.app
-            X509v3 Certificate Policies:
-                Policy: 2.23.140.1.2.2
-                  CPS: http://www.digicert.com/CPS
 
-            X509v3 Key Usage: critical
-                Digital Signature, Key Agreement
-            X509v3 Extended Key Usage:
-                TLS Web Server Authentication
-            X509v3 CRL Distribution Points:
-
-                Full Name:
-                  URI:http://crl3.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crl
-
-                Full Name:
-                  URI:http://crl4.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crl
-
-            Authority Information Access:
                 OCSP - URI:http://ocsp.digicert.com
                 CA Issuers - URI:http://cacerts.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crt
 
 openssl x509 -text -noout -in github.com.pem
 
-Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number:
-            a5:9e:bd:b5:96:75:1d:b7:f5:c0:95:07:96:13:95:3c
-    Signature Algorithm: ecdsa-with-SHA256
-        Issuer: C=GB, O=Sectigo Limited, CN=Sectigo Public Server Authentication CA DV E36
-        Validity
-            Not Before: Sep  1 00:00:00 2026 GMT
-            Not After : Nov 29 23:59:59 2026 GMT
-        Subject: CN=github.com
-        Subject Public Key Info:
-            Public Key Algorithm: id-ecPublicKey
-                Public-Key: (256 bit)
-                pub:
-                    04:85:36:1b:34:bc:b3:51:f7:20:e9:aa:9a:cb:e8:
-                    27:2d:60:d1:31:7b:1d:38:d1:d8:c7:d7:a0:fa:5a:
-                    b1:f1:2f:28:e7:99:51:46:61:22:38:b2:3e:b0:2b:
-                    75:75:ec:00:e2:69:a6:cf:13:4e:2f:42:4e:fa:76:
-                    35:b4:0d:3f:2a
-                ASN1 OID: prime256v1
-                NIST CURVE: P-256
-        X509v3 extensions:
-            X509v3 Authority Key Identifier:
-                keyid:17:99:A8:04:C1:6F:E4:2D:70:A8:0A:10:3D:03:D3:E9:1A:B8:26:63
-
-            X509v3 Subject Key Identifier:
-                66:98:EC:4C:11:35:F7:4B:50:84:8B:A8:1C:36:65:D0:17:56:D4:E0
-            X509v3 Key Usage: critical
-                Digital Signature
-            X509v3 Basic Constraints: critical
-                CA:FALSE
-            X509v3 Extended Key Usage:
-                TLS Web Server Authentication
-            X509v3 Certificate Policies:
-                Policy: 1.3.6.1.4.1.6449.1.2.2.7
-                  CPS: https://sectigo.com/CPS
-                Policy: 2.23.140.1.2.1
-
-            Authority Information Access:
-                CA Issuers - URI:http://crt.sectigo.com/SectigoPublicServerAuthenticationCADVE36.crt
-                OCSP - URI:http://ocsp.sectigo.com
+Subject: CN=github.com
+Issuer: C=GB, O=Sectigo Limited, CN=Sectigo Public Server Authentication CA DV E36
+Validity:
+    Not Before: Sep  1 00:00:00 2026 GMT
+    Not After : Nov 29 23:59:59 2026 GMT
+Serial Number: a5:9e:bd:b5:96:75:1d:b7:f5:c0:95:07:96:13:95:3c
+Signature Algorithm: ecdsa-with-SHA256
+Public Key Info: id-ecPublicKey, P-256
+SAN: absent in the writeup’s analysis, only present in raw output
+X509v3 Key Usage: critical
+X509v3 Extended Key Usage: TLS Web Server Authentication
+Authority Information Access:
+    CA Issuers - URI:http://crt.sectigo.com/SectigoPublicServerAuthenticationCADVE36.crt
+    OCSP - URI:http://ocsp.sectigo.com
 
 openssl x509 -text -noout -in expired.badssl.com.pem
 
-Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number:
-            cd:bc:5a:4a:ec:97:67:b1
-    Signature Algorithm: sha256WithRSAEncryption
-        Issuer: C=US, ST=California, L=San Francisco, O=BadSSL, CN=BadSSL Intermediate Certificate Authority
-        Validity
-            Not Before: Aug  8 21:17:05 2016 GMT
-            Not After : Aug  8 21:17:05 2018 GMT
-        Subject: C=US, ST=California, L=San Francisco, O=BadSSL Fallback. Unknown subdomain or no SNI., CN=badssl-fallback-unknown-subdomain-or-no-sni
-        Subject Public Key Info:
-            Public Key Algorithm: rsaEncryption
-                RSA Public-Key: (2048 bit)
 
+Subject: CN=github.com
+Issuer: Sectigo Public Server Authentication CA DV E36
+Validity: Not Before / Not After
+Serial Number: a5:9e:...
+Signature Algorithm: ecdsa-with-SHA256
+Public Key Info: id-ecPublicKey, P-256
+SAN: absent in the writeup’s analysis, only present in raw output
+
+Subject: C=US, ST=California, L=San Francisco, O=BadSSL Fallback. Unknown subdomain or no SNI., CN=badssl-fallback-unknown-subdomain-or-no-sni
+Issuer: C=US, ST=California, L=San Francisco, O=BadSSL, CN=BadSSL Intermediate Certificate Authority
+Validity:
+    Not Before: Aug  8 21:17:05 2016 GMT
+    Not After : Aug  8 21:17:05 2018 GMT
+Serial Number: cd:bc:5a:4a:ec:97:67:b1
+Signature Algorithm: sha256WithRSAEncryption
+Public Key Info: rsaEncryption RSA Public-Key: (2048 bit)
+SAN: absent in the writeup’s analysis, only present in raw output
+Key Usage / EKU: present in raw output
 
 # Part 2 - The Broken Certificate
 
