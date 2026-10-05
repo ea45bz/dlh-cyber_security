@@ -56,8 +56,15 @@ Key Usage / EKU: present in raw output
 
 # Part 2 - The Broken Certificate
 
-For the expired.badssl.com.pem certificate the validity is expired, as the value for the key "Not After" is  "Aug  8 21:17:05 2018 GMT".
-A browser would respond with an unsecure message, that the certificate is expired.
+What is wrong with the expired.badssl.com.pem file
+- Expiration date
+The certificate’s “Not After” field is 2018‑08‑08, so the cert has been invalid for several years. An expired cert tells a browser that the server hasn’t been verified in the required timeframe.
+- Chain verification fails
+OpenSSL shows Verify return code: 21 (unable to verify the first certificate) – because the chain cannot be validated once any element is expired.
+- No additional warning
+The certificate has no OCSP or CRL information, but that’s not a separate flaw—once it’s expired, those extensions are moot.
+
+A browser would respond with an unsecure message, that the connection is not private and  that the certificate is expired.
 I would not advise a patient to proceed to portal with a certificate error.
 
 # Part 3 - MedDefense Certificate Profile
@@ -77,8 +84,8 @@ GlobalSign, DigiCert, or Sectigo – any CA that offers HIPAA‑compliant OV cer
 
 ## What SAN entries should it include
 
-https://portal.meddefense.com,
-https://www.portal.meddefense.com
+portal.meddefense.com,
+www.portal.meddefense.com
 
 Explicit SANs give browsers a clear indication that every URL in the list is covered and prevent accidental exposure via an unintended sub‑domain.
 
