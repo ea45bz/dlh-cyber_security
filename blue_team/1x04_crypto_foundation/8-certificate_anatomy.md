@@ -5,7 +5,6 @@ openssl s_client -showcerts </dev/null -connect letsencrypt.org:443 >letsencrypt
 openssl s_client -showcerts </dev/null -connect github.com:443 >github.com.pem
 openssl s_client -showcerts </dev/null -connect expired.badssl.com:443 >expired.badssl.com.pem
 
-openssl x509 -text -in letsencrypt.org.pem
 
 openssl x509  -text -noout -in letsencrypt.org.pem
 
@@ -17,25 +16,12 @@ Validity:
 Serial Number: 0c:d5:d0:af:b0:61:1b:5b:d9:d6:92:53:5c:0c:a7:c4
 Signature Algorithm: sha256WithRSAEncryption
 Public Key Info: id-ecPublicKey, P-256
-SAN: absent in the writeup’s analysis, only present in raw output
-Key Usage / EKU: present in raw output
-
-
-    Signature Algorithm: sha256WithRSAEncryption
-            Public Key Algorithm: id-ecPublicKey
-                Public-Key: (256 bit)
-                pub:
-                    04:64:c3:ab:83:a1:9f:9b:f7:ff:e5:00:bf:41:ae:
-                    cd:d1:cd:1c:5d:8d:4d:62:fb:0e:e4:90:33:13:2d:
-                    b5:45:91:e6:7a:26:a0:5e:01:ae:25:84:fb:d5:88:
-                    23:7e:13:7e:a9:d3:a5:de:69:2d:91:69:c3:12:86:
-                    5a:94:02:42:28
-                ASN1 OID: prime256v1
-                NIST CURVE: P-256
-
-
-                OCSP - URI:http://ocsp.digicert.com
-                CA Issuers - URI:http://cacerts.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crt
+SAN: DNS:*.netlify.app, DNS:netlify.app
+X509v3 Key Usage: critical
+X509v3 Extended Key Usage: TLS Web Server Authentication
+Authority Information Access:
+  OCSP - URI:http://ocsp.digicert.com
+  CA Issuers - URI:http://cacerts.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crt
 
 openssl x509 -text -noout -in github.com.pem
 
@@ -47,7 +33,7 @@ Validity:
 Serial Number: a5:9e:bd:b5:96:75:1d:b7:f5:c0:95:07:96:13:95:3c
 Signature Algorithm: ecdsa-with-SHA256
 Public Key Info: id-ecPublicKey, P-256
-SAN: absent in the writeup’s analysis, only present in raw output
+SAN: DNS:github.com, DNS:www.github.com
 X509v3 Key Usage: critical
 X509v3 Extended Key Usage: TLS Web Server Authentication
 Authority Information Access:
@@ -57,14 +43,6 @@ Authority Information Access:
 openssl x509 -text -noout -in expired.badssl.com.pem
 
 
-Subject: CN=github.com
-Issuer: Sectigo Public Server Authentication CA DV E36
-Validity: Not Before / Not After
-Serial Number: a5:9e:...
-Signature Algorithm: ecdsa-with-SHA256
-Public Key Info: id-ecPublicKey, P-256
-SAN: absent in the writeup’s analysis, only present in raw output
-
 Subject: C=US, ST=California, L=San Francisco, O=BadSSL Fallback. Unknown subdomain or no SNI., CN=badssl-fallback-unknown-subdomain-or-no-sni
 Issuer: C=US, ST=California, L=San Francisco, O=BadSSL, CN=BadSSL Intermediate Certificate Authority
 Validity:
@@ -73,7 +51,7 @@ Validity:
 Serial Number: cd:bc:5a:4a:ec:97:67:b1
 Signature Algorithm: sha256WithRSAEncryption
 Public Key Info: rsaEncryption RSA Public-Key: (2048 bit)
-SAN: absent in the writeup’s analysis, only present in raw output
+SAN: DNS:badssl-fallback-unknown-subdomain-or-no-sni
 Key Usage / EKU: present in raw output
 
 # Part 2 - The Broken Certificate
