@@ -57,7 +57,7 @@ Authorization is what turns a verified identity into an active participant withi
 
 ### What HTTP status code indicates authentication failure
 
-**401 Unauthorized**
+
 **403 Forbidden**
 
 ## Authorization
