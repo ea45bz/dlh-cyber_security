@@ -110,30 +110,32 @@ Design the encryption-at-rest strategy for NAS-01.
 
 ## Which encryption level is appropriate (full-disk, volume, file-level) and why
 
-| Topic                      | Recommendation                                                                                                                                                                                                                                  | Why it’s the best choice                                                                                                                                                                                                                                                                                                     |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Encryption granularity** | **Full‑disk (volume) encryption** (Synology “Encrypted shared folder” or built‑in NAS disk encryption)                                                                                                                                          | 1️⃣ Guarantees that _every_ byte on the drive is protected, regardless of file type or user. <br>2️⃣ Simpler to manage – one key per volume, no need to touch individual files.                                                                                                                                                |
-| **Performance impact**     | ~ 5–10 % increase in latency; ~ 0–3 % throughput loss on a 1 T1‑grade NAS (based on our own T1 benchmarks). <br>Example: baseline write IOPS ≈ 9 000 → encrypted ≈ 8 500.                                                                       | Full‑disk encryption only requires one block‑cipher round per sector, which modern CPUs can pipeline quickly; the overhead is dominated by a single 256‑bit AES‑CBC pass per I/O operation.                                                                                                                                  |
-| **Key storage**            | External Key Management Service (KMS) – e.g., on‑prem HSM, Azure Key Vault, AWS KMS, or a dedicated offline key vault that is part of MedDefense’s crypto‑audit policy.                                                                         | Keeps the secret out of the NAS device itself; if an attacker compromises the NAS, they still cannot decrypt data without the separate key store.                                                                                                                                                                            |
-| **Key loss**               | **Data is unrecoverable** – encryption is _loss‑tolerant_ in that the key is required for every read operation. <br>Mitigation: back up the KMS key material (in an offline vault, encrypted and stored with a separate access control policy). | Without a copy of the key you cannot decrypt even if you have perfect backups; the key becomes the single source of truth.                                                                                                                                                                                                   |
-| **Off‑site replication**   | Replicate the _encrypted_ NAS volume to the cloud as is. <br>Optional: apply envelope encryption in the cloud (e.g., encrypt each backup blob with a separate KMS key).                                                                         | The data already satisfies “encryption at rest” for regulatory compliance, so no need to duplicate effort. <br> If you want an extra layer (for example to comply with stricter “data‑at‑rest” rules in the cloud), use a _different_ envelope key that is managed by the same KMS system but isolated from the on‑prem key. |
-| **Key synchronization**    | Use a shared HSM or a secure API call from the NAS to the off‑site KMS to fetch encryption keys only at boot or when writing a new sector.                                                                                                      | Keeps the same master key across both environments while still protecting it from direct access on any single system.                                                                                                                                                                                                        |
-
-### How this integrates with the offsite backup replication control from your 1x03 strategy
-
-1. **NAS‑01** boots, authenticates with the HSM/KMS, pulls the 256‑bit AES key once, and keeps it in RAM only while active.
-2. All I/O passes through a lightweight kernel module that encrypts/decrypts on the fly (no user‑level intervention).
-3. The encrypted volume is sent over Synology’s “Offsite Backup” feature to an S3‑compatible bucket or Azure Blob Storage. Because the data is already encrypted, the cloud service merely stores the blob as‑is—no further encryption needed for compliance.
-4. If you decide to envelope‑encrypt in the cloud (e.g., for an extra audit layer), the NAS and the cloud use distinct keys; both are stored in the same KMS so that a single key‑management console handles rotation, backup, and recovery.
+Full‑disk (volume) encryption (Synology “Encrypted shared folder” or built‑in NAS disk encryption) Guarantees that _every_ byte on the drive is protected, regardless of file type or user.
+Simpler to manage – one key per volume, no need to touch individual files.
 
 ## What happens to backup performance (estimate the overhead based on your T1 performance measurements)
 
-Accept a modest (~5–10 %) I/O overhead; real‑world T1 performance shows negligible impact.
+~ 5–10 % increase in latency; ~ 0–3 % throughput loss on a 1 T1‑grade NAS (based on our own T1 benchmarks).
+Example: baseline write IOPS ≈ 9 000 → encrypted ≈ 8 500.  
+Full‑disk encryption only requires one block‑cipher round per sector, which modern CPUs can pipeline quickly; the overhead is dominated by a single 256‑bit AES‑CBC pass per I/O operation.
 
-### What if the key is lost?
+## Where the encryption key is stored (NOT on the NAS itself, explain why)
 
-| Scenario                                    | Recovery path                                                                                                                                                                                                     |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **HSM/Key vault compromised**               | Restore the master key from an offline backup (e.g., write‑once media stored in a secure vault). The NAS will need to be re‑initialised with that key.                                                            |
-| **Key accidentally deleted from KMS**       | You can’t recover any data; all encrypted volumes are unreadable. Your audit policy must require an immutable, signed “key‑roll‑log” and a secondary backup of the key material in a different physical location. |
-| **User error (e.g., wiping the KMS vault)** | Same as above – data becomes permanently lost unless you have an off‑site copy of the encryption key.                                                                                                             |
+External Key Management Service (KMS) – e.g., on‑prem HSM, Azure Key Vault, AWS KMS, or a dedicated offline key vault that is part of MedDefense’s crypto‑audit policy.
+Keeps the secret out of the NAS device itself; if an attacker compromises the NAS, they still cannot decrypt data without the separate key store.
+
+## What happens if the key is lost (backup recovery implications)
+
+Data is unrecoverable – encryption is _loss‑tolerant_ in that the key is required for every read operation. <br>Mitigation: back up the KMS key material (in an offline vault, encrypted and stored with a separate access control policy). | Without a copy of the key you cannot decrypt even if you have perfect backups; the key becomes the single source of truth.
+
+## How this integrates with the offsite backup replication control from your 1x03 strategy (must the cloud replica also be encrypted, and with whose key ?)
+
+Replicate the _encrypted_ NAS volume to the cloud as is. <br>Optional: apply envelope encryption in the cloud (e.g., encrypt each backup blob with a separate KMS key).  
+The data already satisfies “encryption at rest” for regulatory compliance, so no need to duplicate effort. <br> If you want an extra layer (for example to comply with stricter “data‑at‑rest” rules in the cloud), use a _different_ envelope key that is managed by the same KMS system but isolated from the on‑prem key.
+Use a shared HSM or a secure API call from the NAS to the off‑site KMS to fetch encryption keys only at boot or when writing a new sector.  
+Keeps the same master key across both environments while still protecting it from direct access on any single system.
+
+1. NAS‑01 boots, authenticates with the HSM/KMS, pulls the 256‑bit AES key once, and keeps it in RAM only while active.
+2. All I/O passes through a lightweight kernel module that encrypts/decrypts on the fly (no user‑level intervention).
+3. The encrypted volume is sent over Synology’s “Offsite Backup” feature to an S3‑compatible bucket or Azure Blob Storage. Because the data is already encrypted, the cloud service merely stores the blob as‑is—no further encryption needed for compliance.
+4. If you decide to envelope‑encrypt in the cloud (e.g., for an extra audit layer), the NAS and the cloud use distinct keys; both are stored in the same KMS so that a single key‑management console handles rotation, backup, and recovery.
