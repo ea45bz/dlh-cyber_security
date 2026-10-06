@@ -106,6 +106,8 @@ test data
 
 # Part 4 - MedDefense Backup Encryption Design
 
+Design the encryption-at-rest strategy for NAS-01.
+
 ## Which encryption level is appropriate (full-disk, volume, file-level) and why
 
 | Topic                      | Recommendation                                                                                                                                                                                                                                  | Why it’s the best choice                                                                                                                                                                                                                                                                                                     |
