@@ -69,7 +69,6 @@ sudo cryptsetup luksClose secure_vol
 
 # Part 2 - Verification
 
-<<<<<<< HEAD
 ```
 strings encrypted_volume.img | head -50
 LUKS
@@ -80,10 +79,8 @@ v`+045e9b39-b552-48a4-94a3-f88dc33f7bb1
 {"keyslots":{"0":{"type":"luks2","key_size":64,"af":{"type":"luks1","stripes":4000,"hash":"sha256"},"area":{"type":"raw","offset":"32768","size":"258048","encryption":"aes-xts-plain64","key_size":64},"kdf":{"type":"argon2id","time":5,"memory":1048576,"cpus":4,"salt":"XxSlvDynIUjEvNJkiJ+qfFdKf40sB2gGAaNeu++uEdw="}}},"tokens":{},"segments":{"0":{"type":"crypt","offset":"16777216","size":"dynamic","iv_tweak":"0","encryption":"aes-xts-plain64","sector_size":4096}},"digests":{"0":{"type":"pbkdf2","keyslots":["0"],"segments":["0"],"hash":"sha256","iterations":128000,"salt":"yfOfcmtaiOP+mPyy2jqfcmlWuxx/08jUTNqRdqXIygU=","digest":"bv9peFWpQB+UZ9VHRDi/ZRfFgCxoAPmC5T+dtfUzYvI="}},"config":{"json_size":"12288","keyslots_size":"16744448"}}
 SKUL
 ```
+
 Can you see the data you wrote ? 
-=======
-Can you see the data you wrote ?
->>>>>>> 1994f835e05c6f9d433b7e84cbc801749313e9bb
 
 No, the data is not readable
 
