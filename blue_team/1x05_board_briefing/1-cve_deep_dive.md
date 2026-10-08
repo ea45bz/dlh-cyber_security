@@ -28,7 +28,7 @@ CVE_2023_27997:
 # Part 2 - Exploit Assessment
 
 Is there a public exploit ?
-False
+True
 
 Is this CVE in the CISA KEV catalog ?
 Listed in CISA KEV – advisory explicitly states CVE‑2023‑27997 is listed
