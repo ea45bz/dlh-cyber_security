@@ -41,8 +41,12 @@ What is your Exploitability Score?
 Adjusted Base Score:
 Score: 9.8
 Description: >
+FortiGate 100F is the only perimeter device, terminates all VPN tunnels for Central, Westside and Corporate HQ. It sits at kill‑chain phases.  
+The support contract has expired – patching cannot be performed until renewal.
+No effective mitigation in place (no redundancy, no rapid patching)
+
 Because the environment does not provide any reduction to the impact or exploitability
-metrics (the FortiGate is singular and cannot be patched immediately), the
+metrics. The FortiGate is singular and cannot be patched immediately because of an expired support contract, the
 environmental CVSS reduces to the same as the base score.  
 Thus the adjusted score remains 9.8– Critical.
 
