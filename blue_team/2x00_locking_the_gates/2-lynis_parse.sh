@@ -1,9 +1,12 @@
-#!/usr/bin/env python
-import sys, json
+#!/bin/bash
+#
+export PYTORCH_ENABLE_MPS_FALLBACK=1
 
+python3 -c '
+import sys, json
 findings=[]
 report=sys.argv[1]
-with open(report, 'r') as file:
+with open(report, "r") as file:
   for line in file.readlines():
     try:
       key,content=line.split("=")
@@ -21,3 +24,4 @@ output = { "hardening_index": hardening_index,
         "findings": findings }
 
 print(json.dumps(output, indent=4))
+' $1
