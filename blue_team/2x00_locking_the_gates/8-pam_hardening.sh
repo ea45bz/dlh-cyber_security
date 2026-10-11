@@ -30,24 +30,17 @@ set_cfg lcredit -1
 set_cfg ocredit -1
 set_cfg maxrepeat 3
 
-CONFIG="/etc/pam.d/common-password"
-BACKUP="${CONFIG}.bak.$(date +%Y%m%d%H%M%S)"
-cp "$CONFIG" "$BACKUP"
 sed -i '/pam_pwquality.so/ s/$/ reject_username/' /etc/pam.d/common-password
 log "    reject_username  [SET]"
 
 log "[*] Configuring account lockout (pam_faillock)..."
 CONFIG="/etc/security/faillock.conf"
-BACKUP="${CONFIG}.bak.$(date +%Y%m%d%H%M%S)"
-cp "$CONFIG" "$BACKUP"
 set_cfg deny 5
 set_cfg unlock_time 900
 set_cfg fail_interval 900
 
 log "[*] Configuring password history..."
 CONFIG="/etc/security/pwhistory.conf"
-BACKUP="${CONFIG}.bak.$(date +%Y%m%d%H%M%S)"
-cp "$CONFIG" "$BACKUP"
 set_cfg remember 12
 
 length=14
