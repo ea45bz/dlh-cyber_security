@@ -14,7 +14,7 @@ if systemctl list-unit-files --value  apparmor.service  --state=enabled --no-pag
 else
     systemctl enable --now apparmor.service
 fi
-log "    AppArmor module: actice"
+log "    AppArmor module: active"
 
 log "[*] Profile enforcement:"
 
