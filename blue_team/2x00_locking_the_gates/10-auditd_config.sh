@@ -19,7 +19,7 @@ CONFIG="/etc/audit/rules.d/meddefense.rules"
 count=0
 add_med_rule() {
   echo -e "$*" >>"$CONFIG"
-  log "$* [ADDED]"
+  log "    $* [ADDED]"
   count=$((count + 1))
 }
 add_med_rule -w /etc/passwd -p wa -k identity
