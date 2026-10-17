@@ -24,8 +24,8 @@ log "[*] Configuring UFW..."
 # Default policies
 ufw default deny incoming > /dev/null
 ufw default allow outgoing > /dev/null
-ufw reset > /dev/null
-ufw enable > /dev/null || true
+ufw -f reset > /dev/null
+ufw -f enable > /dev/null || true
 
 log "    Default incoming: deny"
 log "    Default outgoing: allow"
@@ -50,7 +50,7 @@ ufw logging on > /dev/null
 ufw status verbose | grep Logging | awk '{print "    Logging:", $2}'
 
 log "[*] Activating firewall..."
-ufw enable > /dev/null || true   # keep idempotent
+ufw -f enable > /dev/null || true   # keep idempotent
 
 allow_rules=$( ufw status numbered | grep 'ALLOW' | wc -l)
 log "    UFW: active"
