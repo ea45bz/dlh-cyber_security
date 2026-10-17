@@ -11,7 +11,7 @@ missed=0
 run_test() {
     local COMMAND="$1"
     local KEY="$2"
-    local DESCRIPTION="$2"
+    local DESCRIPTION="$3"
     count=$((count + 1))
     $COMMAND 2>/dev/null >>audit_validation.json
     echo "checking: ausearch -i  -ts recent -k $KEY"  >>audit_validation.json
