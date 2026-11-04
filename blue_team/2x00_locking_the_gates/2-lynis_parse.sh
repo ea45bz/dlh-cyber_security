@@ -16,7 +16,7 @@ with open(report, "r") as file:
           "test_id": c[0],
           "message": c[1]})
       elif key == "hardening_index":
-        hardening_index = int(content)
+         = int(content)
     except Exception:
       pass
 
