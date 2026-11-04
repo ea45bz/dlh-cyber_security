@@ -2,17 +2,6 @@
 
 log() { printf '\033[1;32m%s\033[0m\n' "$*"; }
 
-log "[*] Enabling auditd service..."
-if dpkg-query -W auditd >/dev/null; then
-  version=$(dpkg-query -W  auditd |cut -d ' ' -f 2)
-  log "    Already installed: auditd $version"
-else
-    apt-get -y install  auditd >/dev/null
-fi
-if ! systemctl list-unit-files --value  auditd.service  --state=enabled --no-pager >/dev/null; then
-    systemctl enable --now auditd.service
-fi
-log "    auditd.service: active (running)"
 log "[*] Current auditd rules:  $(auditctl -l |wc -l)"
 
 CONFIG="/etc/audit/rules.d/meddefense_refine.rules"
