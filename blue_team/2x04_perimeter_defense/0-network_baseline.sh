@@ -37,22 +37,25 @@ neighbors_json=$(ip -j neigh show | jq '
 
 # --------------------------------------------------------------------
 # 4. Listening sockets -----------------------------------------------
-listening_json=$(ss -tulnpH |python3  -c '
-import json,sys
+listening_json=$(ss -tulnpH |python3  -c '''
+import json,sys,re
 text=sys.stdin.read()
 rows=[]
 for line in text.splitlines():
     fields = line.split(maxsplit=6)
     if len(fields) >= 6:
+        pids = [int(m) for m in re.findall(r"pid=(\d+)", fields[6])]
+        processes = re.search(r"\"\([^\"]+?\)\"", fields[6])
         rows.append({
-            "netid": fields[0],
+            "protocol": fields[0],
             "state": fields[1],
-            "local_address": fields[4],
-            "peer_address": fields[5],
-            "process": fields[6] if len(fields) > 6 else None,
+            "local_ip": fields[4].rsplit(":",1)[0],
+            "local_port": fields[4].rsplit(":",1)[1],
+            "pid": pids[0] if pids else None,
+            "process":  processes.group(1) if processes else None
         })
 print(json.dumps(rows, indent=2))
-')
+''')
 # --------------------------------------------------------------------
 # 5. Established connections -----------------------------------------
 established_json=$(ss -tnpH state established |python3  -c '
