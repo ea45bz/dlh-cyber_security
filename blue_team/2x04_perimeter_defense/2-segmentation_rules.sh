@@ -39,7 +39,6 @@ cat > "$OUT_FILE" <<'EOF'
     }
   ],
   "flows": [
-    # MGMT → INTERNAL
     {
       "src_zone": "MGMT",
       "dst_zone": "INTERNAL",
@@ -48,7 +47,6 @@ cat > "$OUT_FILE" <<'EOF'
       "justification": "SSH to clinical servers",
       "exception_for": null
     },
-    # MGMT → DMZ
     {
       "src_zone": "MGMT",
       "dst_zone": "DMZ",
@@ -57,7 +55,6 @@ cat > "$OUT_FILE" <<'EOF'
       "justification": "SSH to web and API hosts",
       "exception_for": null
     },
-    # INTERNAL workstations → INTERNAL servers
     {
       "src_zone": "INTERNAL",
       "dst_zone": "INTERNAL",
@@ -66,7 +63,6 @@ cat > "$OUT_FILE" <<'EOF'
       "justification": "EHR/DB traffic within clinical network",
       "exception_for": null
     },
-    # DMZ application hosts → INTERNAL databases
     {
       "src_zone": "DMZ",
       "dst_zone": "INTERNAL",
@@ -76,7 +72,6 @@ cat > "$OUT_FILE" <<'EOF'
       "exception_for": null,
       "app_hosts_only": true
     },
-    # MEDDEV → INTERNAL (DICOM + EHR)
     {
       "src_zone": "MEDDEV",
       "dst_zone": "INTERNAL",
@@ -85,7 +80,6 @@ cat > "$OUT_FILE" <<'EOF'
       "justification": "Medical devices talking to PACS & EHR web",
       "exception_for": null
     },
-    # Any zone → MGMT DNS resolver
     {
       "src_zone": "*",
       "dst_zone": "MGMT",
@@ -96,7 +90,6 @@ cat > "$OUT_FILE" <<'EOF'
     }
   ],
   "deny_all": [
-    # explicit deny when no flow is defined between zone pairs
     {
       "src_zone": "*",
       "dst_zone": "MEDDEV",
