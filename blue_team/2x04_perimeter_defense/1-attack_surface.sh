@@ -107,7 +107,7 @@ for sock in $(jq -c '.listening_sockets[]' "$BASE_JSON"); do
         --arg process "$proc_name" \
         --arg package "$pkg" \
         --arg crit "$crit" \
-        --arg flags "$("${flags[@]}" | jq -R . | jq -s .)" \
+        --arg flags "$(printf '%s\n' "${flags[@]}" | jq -R . | jq -s .)" \
         '{
             proto: $proto,
             port: ($port|tonumber),
