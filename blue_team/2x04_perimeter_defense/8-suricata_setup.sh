@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # 8-suricata_setup.sh – install Suricata, load rules and perform an offline replay test
 
 set -euo pipefail
