@@ -39,7 +39,7 @@ if [[ ! -f "$EVE_FILE" ]]; then
     exit 1
 fi
 
-alerts_json=$(jq '.[] | select(.event_type=="alert")' "$EVE_FILE")
+alerts_json=$(jq -c 'select(.event_type=="alert")' "$EVE_FILE")
 
 total_alerts=$(echo "$alerts_json" | jq 'length')
 unique_sigs=$(echo "$alerts_json" | jq '[ .signature_id ] | unique | length')
