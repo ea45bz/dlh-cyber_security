@@ -4,6 +4,7 @@
 
 set -euo pipefail
 
+IFS=$'\n'
 RULES="meddefense.rules"
 SURICATA_CFG="./suricata.yaml"
 
