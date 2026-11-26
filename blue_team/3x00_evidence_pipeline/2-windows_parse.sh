@@ -39,7 +39,28 @@ add_records "$ROOT/windows/security.json" "evidence_pack"
 add_records "$ROOT/windows/sysmon.json"   "evidence_pack"
 add_records "$ROOT/windows/powershell.json" "evidence_pack"
 # student telemetry
-add_records "$ROOT/student_telemetry/windows_events.json" "student_telemetry"
+telemetry_file="$ROOT/student_telemetry/windows_events.json"
+count=0
+if [[ -f $telemetry_file ]]; then
+    while IFS= read -r line; do
+        [[ -z $line ]] && continue
+        json=$(jq -c '
+            . + {
+                timestamp: (.timestamp // empty),
+                hostname:      (.hostname     // empty),
+                event_id:      (.event_id    // empty),
+                source_type:   (.source_type // empty),
+                event_category: (.event_category // empty),
+                channel:       (.user     // empty),
+                raw_message:   (.raw_message // empty),
+                source_origin: "student_telemetry"
+            }' <<<"$line")
+        records+=("$json")
+        count=$((count + 1))
+    done < "$telemetry_file"
+    echo "appending student telemetry ... $count records"
+fi
+
 
 # write output
 printf "%s\n" "${records[@]}" > "$OUT_FILE"
