@@ -1,0 +1,113 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MedDefense Unified Event Schema",
+  "description": "Canonical event record used by all downstream modules.",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "timestamp",
+      "required": "True",
+      "description": "ISO‑8601 UTC timestamp of the original event.",
+      "justification": "Provides a single chronological reference for cross‑source correlation.",
+    },
+    "hostname": {
+      "type": "string",
+      "required": "True",
+      "description": "Fully qualified or short name of the host where the event was captured.",
+      "justification": "Enables source‑based filtering and host‑level triage."
+    },
+    "source_type": {
+      "type": "string",
+      "enum": ["windows_json","linux_text","network_csv","network_json","student_telemetry"],
+      "required": "True",
+      "description": "Origin of the record before normalization.",
+      "justification": "Allows downstream modules to apply source‑specific enrichment."
+    },
+    "event_category": {
+      "type": "string",
+      "enum": ["authentication","process","file","network","audit","security_policy","misc"],
+      "required": "True",
+      "description": "High‑level event category such as authentication, process, file, network or audit.",
+      "justification": "Needed by 3x02 detection rules and 3x03 triage filters to group events independently of source vendor."
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["low","medium","high","critical"],
+      "required": "True",
+      "description": "Risk level assigned to the event.",
+      "justification": "Enables automated escalation logic in 3x02 and provides analyst context for triage."
+    },
+    "user": {
+      "type": "string",
+      "description": "Username associated with the event, if any.",
+      "justification": "Required to link authentication and privilege‑elevation events to a specific account."
+    },
+    "process_name": {
+      "type": "string",
+      "description": "Executable name that produced the event.",
+      "justification": "Essential for process‑based detection and forensic analysis."
+    },
+    "src_ip": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "Source IP address of a network or audit event.",
+      "justification": "Needed to map inbound/outbound traffic for incident response."
+    },
+    "dst_ip": {
+      "type": "string",
+      "format": "ipv4",
+      "description": "Destination IP address of a network or audit event.",
+      "justification": "Required to identify target hosts in attack chains."
+    },
+    "src_port": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535,
+      "description": "Source TCP/UDP port, if applicable.",
+      "justification": "Allows fine‑grained protocol filtering for network and audit events."
+    },
+    "dst_port": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535,
+      "description": "Destination TCP/UDP port, if applicable.",
+      "justification": "Used by detection rules to identify service‑level anomalies."
+    },
+    "protocol": {
+      "type": "string",
+      "enum": ["tcp","udp","icmp","smb","http","https","tls", "unknown"],
+      "description": "Transport or application protocol of the event.",
+      "justification": "Required for protocol‑based rule matching in 3x02."
+    },
+    "raw_message": {
+      "type": "string",
+      "description": "Full unmodified source line from the original log.",
+      "justification": "Preserves context for manual triage and forensic review."
+    },
+    "event_data": {
+      "type": ["object","null"],
+      "description": "Parsed key/value pairs extracted from the source record.",
+      "justification": "Provides access to vendor‑specific details without bloating top‑level fields."
+    },
+    "source_origin": {
+      "type": "string",
+      "enum": ["evidence_pack","student_telemetry"],
+      "description": "Indicates whether the record came from evidence or student telemetry.",
+      "justification": "Allows downstream systems to weight provenance during analysis."
+    }
+  },
+  "required": [
+    "timestamp",
+    "hostname",
+    "source_type",
+    "event_category",
+    "severity",
+    "user",
+    "process_name",
+    "src_ip",
+    "dst_ip",
+    "raw_message",
+    "source_origin"
+  ],
+  "additionalProperties": false
+}
