@@ -5,35 +5,31 @@
   "type": "object",
   "properties": {
     "timestamp": {
-      "type": "timestamp",
-      "required": "True",
+      "type": "string",
+      "format": "date-time",
       "description": "ISO‑8601 UTC timestamp of the original event.",
-      "justification": "Provides a single chronological reference for cross‑source correlation.",
+      "justification": "Provides a single chronological reference for cross‑source correlation."
     },
     "hostname": {
       "type": "string",
-      "required": "True",
       "description": "Fully qualified or short name of the host where the event was captured.",
       "justification": "Enables source‑based filtering and host‑level triage."
     },
     "source_type": {
       "type": "string",
       "enum": ["windows_json","linux_text","network_csv","network_json","student_telemetry"],
-      "required": "True",
       "description": "Origin of the record before normalization.",
       "justification": "Allows downstream modules to apply source‑specific enrichment."
     },
     "event_category": {
       "type": "string",
       "enum": ["authentication","process","file","network","audit","security_policy","misc"],
-      "required": "True",
       "description": "High‑level event category such as authentication, process, file, network or audit.",
       "justification": "Needed by 3x02 detection rules and 3x03 triage filters to group events independently of source vendor."
     },
     "severity": {
       "type": "string",
       "enum": ["low","medium","high","critical"],
-      "required": "True",
       "description": "Risk level assigned to the event.",
       "justification": "Enables automated escalation logic in 3x02 and provides analyst context for triage."
     },
